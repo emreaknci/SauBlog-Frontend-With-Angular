@@ -1,6 +1,5 @@
-import { BaseEntity } from "./baseEntity";
+import { BaseEntity } from "./baseModels/baseEntity";
 
 export interface Category extends BaseEntity{
-    id:number;
     name:String;
 }

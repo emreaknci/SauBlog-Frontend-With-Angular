@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from './models/category';
 import { CategoryService } from './services/category.service';
@@ -16,7 +15,7 @@ export class AppComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.getall();
+    //this.getall();
   }
   getall() {
     this.cs.getAll().subscribe(

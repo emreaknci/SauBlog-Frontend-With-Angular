@@ -1,0 +1,27 @@
+<div class="border">
+    <h3 class="pt-3 mx-auto">Kategoriler</h3>
+
+    <div class="mx-auto py-3">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                    aria-expanded="true" aria-controls="collapseOne">
+                    Tüm Kategoriler
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#categoryAccordion">
+                <div class="accordion-body">
+
+                        <li *ngFor="let item of categories" class="list-group-item list-group-item-action">
+                            {{item.name}}
+                            <span class="badge bg-primary rounded-pill">{{item.blogCount}}</span>
+                        </li>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

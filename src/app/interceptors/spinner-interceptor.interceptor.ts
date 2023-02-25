@@ -10,14 +10,17 @@ import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable()
 export class SpinnerInterceptor implements HttpInterceptor {
-
-  constructor(private spinner: NgxSpinnerService) {}
+  mainDom: any = document.querySelector("main");
+  constructor(private spinner: NgxSpinnerService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    
+    this.mainDom.style.display = 'none';
     this.spinner.show();
 
     return next.handle(req).pipe(
       finalize(() => {
+        this.mainDom.style.display = 'block';
         this.spinner.hide();
       })
     );

@@ -1,0 +1,30 @@
+<div class="row">
+    <div *ngFor="let item of blogForList" class="col-md-6 p-0">
+        <mat-card class="example-card m-5">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{item.title}}</mat-card-title>
+                <mat-card-subtitle>Yazar: <b> {{item.writerNickName}}</b></mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="{{imagePath}}/{{item.imagePath}}" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>Bloga Git &raquo;</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+    <mat-paginator #paginator class="demo-paginator" 
+    (page)="handlePageEvent($event)" [length]="length"
+        [pageSize]="pageSize" 
+        [showFirstLastButtons]="true"
+         [pageSizeOptions]="[4,6,8]" 
+         [hidePageSize]="false"
+        [pageIndex]="pageIndex" 
+        aria-label="Select page">
+    </mat-paginator>
+
+
+</div>

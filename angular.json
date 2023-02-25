@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cafe-frontend": {
+    "sau-blog": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cafe-frontend",
+            "outputPath": "dist/sau-blog",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -30,16 +30,18 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/ngx-spinner/animations/timer.css",
               "./node_modules/ngx-spinner/animations/ball-spin.css",
               "./node_modules/ngx-spinner/animations/ball-spin-clockwise-fade-rotating.css",
               "./node_modules/ngx-toastr/toastr.css",
+              "./node_modules/font-awesome/css/font-awesome.min.css",
               "src/styles.scss"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {
@@ -73,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "cafe-frontend:build:production"
+              "browserTarget": "sau-blog:build:production"
             },
             "development": {
-              "browserTarget": "cafe-frontend:build:development"
+              "browserTarget": "sau-blog:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "cafe-frontend:build"
+            "browserTarget": "sau-blog:build"
           }
         },
         "test": {
@@ -101,6 +103,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []

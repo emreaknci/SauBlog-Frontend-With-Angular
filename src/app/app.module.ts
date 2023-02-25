@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpinnerInterceptor } from './interceptors/spinner-interceptor.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { MainModule } from './layouts/main/main.module';
+import { UserModule } from './layouts/user/user.module';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,12 @@ import { ToastrModule } from 'ngx-toastr';
       disableTimeOut: 'extendedTimeOut'
 
     }),
+    MainModule,
+    UserModule
   ],
-  providers: [{ provide: 'baseUrl', useValue: 'https://localhost:7126/api', multi: true },
-  { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true }],
+  providers: [
+    { provide: 'baseUrl', useValue: 'https://localhost:7126/', multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

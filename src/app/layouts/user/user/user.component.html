@@ -1,0 +1,138 @@
+<div class="wrapper d-flex align-items-stretch">
+
+    <nav id="sidebar">
+        <div class="p-4 pt-5">
+            <a href="#" class="img logo rounded-circle mb-5"
+                style="background-image: url(https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png);"></a>
+            <div class="d-flex justify-content-center">
+                Kullanıcı Adı
+            </div>
+            <ul class="list-unstyled components mb-5">
+                <li>
+                    <a href="#accountSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Hesabım</a>
+                    <ul class="collapse list-unstyled" id="accountSubmenu">
+                        <li>
+                            <a>Bilgilerimi Düzenle</a>
+                        </li>
+                        <li>
+                            <a>Şifre Değiştir</a>
+                        </li>
+
+                        <!--Yazarsa-->
+                        <li>
+                            <a>NickName Değiştir</a>
+                        </li>
+                        <!--Yazarsa-->
+
+                        <li>
+                            <a>Hesabımı Sil</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <!--Adminse-->
+                <li>
+                    <a> <span class="nav-label">Bloglar</span></a>
+                </li>
+                <li>
+                    <a href="#categorySubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Kategori
+                        İşlemleri</a>
+                    <ul class="collapse list-unstyled" id="categorySubmenu">
+                        <li>
+                            <a>Kategoriler</a>
+                        </li>
+                        <li>
+                            <a>Yeni Kategori</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#commentSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Yorum
+                        İşlemleri</a>
+                    <ul class="collapse list-unstyled" id="commentSubmenu">
+                        <li><a>Yorumlar</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#roleSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Yetki
+                        İşlemleri</a>
+                    <ul class="collapse list-unstyled" id="roleSubmenu">
+                        <li><a>Adminler</a></li>
+                        <li>
+                            <a>Yazarlar</a>
+                        </li>
+                    </ul>
+                </li>
+                <!--Adminse-->
+
+
+                <!--Yazarsa-->
+                <li>
+                    <a href="#blogForWriterSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Blog İşlemleri</a>
+                    <ul class="collapse list-unstyled" id="blogForWriterSubmenu">
+                        <li><a>Bloglarım</a></li>
+                        <li><a>Yeni Blog</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a>Yorumlarım</a>
+                </li>
+                <!--Yazarsa-->
+
+                <li>
+                    <a>Siteye Git</a>
+                </li>
+                <li>
+                    <a>Çıkış Yap</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="content" class="p-4 p-md-5">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link">Profilim</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">Siteye Git</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link">Çıkış Yap</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <main role="main">
+
+
+            <router-outlet></router-outlet>
+
+
+        </main>
+    </div>
+</div>
