@@ -9,6 +9,7 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoryListComponent implements OnInit {
   categories: CategoryForListDto[] = [];
+
   constructor(private categoryService: CategoryService) {
 
   }

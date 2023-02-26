@@ -6,7 +6,6 @@ import { HomeComponent } from './home/home.component';
 import { BlogComponent } from './blog/blog.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
@@ -17,19 +16,23 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { RegisterComponent } from './register/register.component';
 import { MainComponent } from './main/main.component';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { LastBlogsComponent } from './last-blogs/last-blogs.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     BlogComponent,
-    SidebarComponent,
     CategoryListComponent,
     LoginComponent,
     ForgotPasswordComponent,
     RegisterComponent,
     MainComponent,
     BlogDetailComponent,
+    LastBlogsComponent,
 
   ],
   imports: [
@@ -41,7 +44,10 @@ import { BlogDetailComponent } from './blog-detail/blog-detail.component';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDividerModule,
+    MatListModule,
+    MatExpansionModule
   ]
 })
 export class MainModule { }

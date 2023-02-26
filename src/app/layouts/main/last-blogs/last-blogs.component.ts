@@ -3,11 +3,11 @@ import { LastBlogDto } from 'src/app/models/dtos/lastBlogDto';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  selector: 'app-last-blogs',
+  templateUrl: './last-blogs.component.html',
+  styleUrls: ['./last-blogs.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class LastBlogsComponent implements OnInit {
   constructor(private blogService: BlogService) { }
 
   lastBlogs: LastBlogDto[] = [];

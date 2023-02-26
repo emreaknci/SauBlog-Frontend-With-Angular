@@ -1,27 +1,29 @@
-<div class="border">
-    <h3 class="pt-3 mx-auto">Kategoriler</h3>
+<mat-accordion>
+    <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title class="h4 fw-bold">
+                Kategoriler
+            </mat-panel-title>
+        </mat-expansion-panel-header>
 
-    <div class="mx-auto py-3">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    Tüm Kategoriler
-                </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                data-bs-parent="#categoryAccordion">
-                <div class="accordion-body">
+        <mat-divider></mat-divider>
 
-                        <li *ngFor="let item of categories" class="list-group-item list-group-item-action">
-                            {{item.name}}
-                            <span class="badge bg-primary rounded-pill">{{item.blogCount}}</span>
-                        </li>
+        <mat-list>
+            <div *ngFor="let item of categories">
 
-                </div>
+                <mat-list-item>
+                    <span matListItemTitle> {{item.name}}
+                        <span class="badge bg-primary rounded-pill">
+                            {{item.blogCount}}
+                        </span>
+                    </span>
+                </mat-list-item>
+
+                <mat-divider></mat-divider>
+
             </div>
-        </div>
-    </div>
+        </mat-list>
 
+    </mat-expansion-panel>
 
-</div>
+</mat-accordion>

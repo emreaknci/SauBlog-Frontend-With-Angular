@@ -1,0 +1,20 @@
+<mat-accordion>
+    <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title class="h4 fw-bold">
+                Son Bloglar
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ol class="list-group list-group-numbered">
+            <li *ngFor="let item of lastBlogs" class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="h6 fw-bold">{{item.title}}</div>
+                    <span class="fs-6">{{item.createdDate}}</span>
+                    <button routerLink="/blog-detail/{{item.id}}" mat-button>Bloga Git
+                        &raquo;</button>
+                </div>
+                <span class="badge bg-primary rounded-pill">{{item.commentCount}}</span>
+            </li>
+        </ol>
+    </mat-expansion-panel>
+</mat-accordion>
