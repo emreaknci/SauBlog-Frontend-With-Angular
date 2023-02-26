@@ -4,19 +4,33 @@ import { ChangeNickNameComponent } from './account/change-nick-name/change-nick-
 import { ChangePasswordComponent } from './account/change-password/change-password.component';
 import { EditProfileComponent } from './account/edit-profile/edit-profile.component';
 import { UserComponent } from './user/user.component';
+import { AddComponent as CategoryAddComponent } from './category/add/add.component';
+import { ListComponent as CategoryListComponent } from './category/list/list.component';
+import { EditComponent as CategoryEditComponent } from './category/edit/edit.component';
 
 const routes: Routes = [
-  {
-    path: 'u', component: UserComponent, 
-    children: [
-      { path: '', component: EditProfileComponent },
-      { path: 'edit-profile', component: EditProfileComponent },
-      { path: 'change-password', component: ChangePasswordComponent },
-      { path: 'change-nick-name', component:ChangeNickNameComponent },
-
-    ]
+  {//account
+    path: 'u', component: UserComponent,
+    children:
+      [
+        { path: '', component: EditProfileComponent },
+        { path: 'edit-profile', component: EditProfileComponent },
+        { path: 'change-password', component: ChangePasswordComponent },
+        { path: 'change-nick-name', component: ChangeNickNameComponent },
+      ]
+  },
+  {//category
+    path: 'u', component: UserComponent,
+    children:
+      [
+        { path: 'category', component: CategoryListComponent },
+        { path: 'category/list', component: CategoryListComponent },
+        { path: 'category/add', component: CategoryAddComponent },
+        { path: 'category/edit/:id', component: CategoryEditComponent },
+      ]
   }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
