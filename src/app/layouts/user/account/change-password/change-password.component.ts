@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./change-password.component.scss']
 })
 export class ChangePasswordComponent {
-
+  hideOldPassword:boolean = true;
+  hideNewPassword:boolean = true;
+  hideConfirmNewPassword:boolean = true;
+  
 }

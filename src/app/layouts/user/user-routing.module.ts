@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ChangeNickNameComponent } from './account/change-nick-name/change-nick-name.component';
+import { ChangePasswordComponent } from './account/change-password/change-password.component';
+import { EditProfileComponent } from './account/edit-profile/edit-profile.component';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {
     path: 'u', component: UserComponent, 
     children: [
-      { path: 'change-password', component: ChangePasswordComponent }
+      { path: '', component: EditProfileComponent },
+      { path: 'edit-profile', component: EditProfileComponent },
+      { path: 'change-password', component: ChangePasswordComponent },
+      { path: 'change-nick-name', component:ChangeNickNameComponent },
+
     ]
   }
 ];
