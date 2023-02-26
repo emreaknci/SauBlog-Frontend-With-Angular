@@ -6,6 +6,8 @@ declare var $: any;
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+  panelOpenState = false;
+
   ngOnInit(): void {
     (function ($) {
 
