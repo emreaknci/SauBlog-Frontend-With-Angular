@@ -6,4 +6,5 @@ export interface BlogForListDto {
     writerNickName?: String;
     imagePath?: String;
     createdDate?: Date;
+    status?: Boolean;
 }

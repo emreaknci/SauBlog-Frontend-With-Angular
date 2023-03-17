@@ -4,12 +4,17 @@ import { ChangeNickNameComponent } from './account/change-nick-name/change-nick-
 import { ChangePasswordComponent } from './account/change-password/change-password.component';
 import { EditProfileComponent } from './account/edit-profile/edit-profile.component';
 import { UserComponent } from './user/user.component';
+
 import { AddComponent as CategoryAddComponent } from './category/add/add.component';
 import { ListComponent as CategoryListComponent } from './category/list/list.component';
 import { EditComponent as CategoryEditComponent } from './category/edit/edit.component';
+
 import { ListComponent as CommentListComponent} from './comment/list/list.component';
 import { MyCommentsComponent } from './comment/my-comments/my-comments.component';
 
+import { ListComponent as BlogListComponent } from'./blog/list/list.component' 
+import { MyBlogsComponent} from'./blog/my-blogs/my-blogs.component' 
+import { AddComponent as BlogAddComponent} from'./blog/add/add.component' 
 const routes: Routes = [
   {//account
     path: 'u', component: UserComponent,
@@ -35,9 +40,18 @@ const routes: Routes = [
     path: 'u', component: UserComponent,
     children:
       [
-        { path: '', component: CommentListComponent },
         { path: 'comments', component: CommentListComponent },
-        { path: 'my-comments', component: MyCommentsComponent },
+        { path: 'comments/my-comments', component: MyCommentsComponent },
+      ]
+  },
+  {//blog
+    path: 'u', component: UserComponent,
+    children:
+      [
+        { path: 'blog', component: BlogListComponent },
+        { path: 'blog/list', component: BlogListComponent },
+        { path: 'blog/my-blogs', component: MyBlogsComponent },
+        { path: 'blog/add', component: BlogAddComponent },
       ]
   }
 ];

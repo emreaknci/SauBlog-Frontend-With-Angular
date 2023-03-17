@@ -7,6 +7,7 @@ import { UserComponent } from './user/user.component';
 import { AccountModule } from './account/account.module';
 import { CategoryModule } from './category/category.module';
 import { CommentModule } from './comment/comment.module';
+import { BlogModule } from './blog/blog.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CommentModule } from './comment/comment.module';
     UserRoutingModule, 
     AccountModule,
     CategoryModule,
-    CommentModule
+    CommentModule,
+    BlogModule
   ],
   exports:[]
 })

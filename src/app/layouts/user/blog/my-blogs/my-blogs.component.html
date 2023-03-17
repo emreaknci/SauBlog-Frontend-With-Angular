@@ -1,0 +1,70 @@
+<h2 class="fw-bold">Bloglarım</h2>
+<mat-form-field>
+  <mat-label>Bloglarda Ara</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+
+    <!-- Blog Title Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+      <td class="text-capitalize" mat-cell *matCellDef="let row"> {{row.title}} </td>
+    </ng-container>
+
+    <!-- Writer Column -->
+    <ng-container matColumnDef="writerNickName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Writer </th>
+      <td class="text-capitalize" mat-cell *matCellDef="let row"> {{row.writerNickName}} </td>
+    </ng-container>
+
+    <!-- Comment Count Column -->
+    <ng-container matColumnDef="commentCount">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Comment Count </th>
+      <td class="text-capitalize" mat-cell *matCellDef="let row"> {{row.commentCount}} </td>
+    </ng-container>
+
+    <!-- Created Date Column -->
+    <ng-container matColumnDef="createdDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </th>
+      <td mat-cell *matCellDef="let row"> {{row.createdDate}} </td>
+    </ng-container>
+
+    <!-- Updated Date Column -->
+    <ng-container matColumnDef="updatedDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Updated Date </th>
+      <td mat-cell *matCellDef="let row"> {{row.updatedDate}} </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+      <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+    </ng-container>
+
+    <!-- Options Column -->
+    <ng-container matColumnDef="options">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Options </th>
+      <td mat-cell *matCellDef="let row"> -dropdown- </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">Sonuç Bulunamadı</td>
+    </tr>
+  </table>
+
+  <mat-paginator (page)="pageChanged()" [pageSizeOptions]="[1,5, 10, 20]" showFirstLastButtons
+    aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>

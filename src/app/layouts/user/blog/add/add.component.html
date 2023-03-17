@@ -1,0 +1,56 @@
+<div class="row my-5">
+
+    <div class="offset-3 col-6">
+        <h2 class="fw-bold">Blog Ekle</h2>
+
+        <form>
+            <div class="mb-3 row">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>Başlık </mat-label>
+                    <input matInput placeholder="">
+                </mat-form-field>
+            </div>
+
+            <div class="mb-3 row">
+                <mat-form-field class="w-100" appearance="fill">
+                    <mat-label>İçerik </mat-label>
+                    <textarea matInput></textarea>
+                </mat-form-field>
+            </div>
+            
+            <div class="mb-3 row">
+                <mat-form-field appearance="fill">
+                    <mat-label>Kategoriler</mat-label>
+                    <mat-select [formControl]="categories" multiple>
+                        <mat-select-trigger>
+                            {{categories.value?.[0] || ''}}
+                            <span *ngIf="(categories.value?.length || 0) > 1" class="example-additional-selection">
+                                (+{{(categories.value?.length || 0) - 1}} {{categories.value?.length === 2 ? 'other' :
+                                'others'}})
+                            </span>
+                        </mat-select-trigger>
+                        <mat-option *ngFor="let category of categoryList" [value]>{{category.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-warning btn-block text-white">Kapak Resmi</button>
+                    <div class="form-group inputDnD">
+                        <label class="sr-only" for="inputFile">File Upload</label>
+                        <input type="file" class="form-control-file text-warning font-weight-bold" id="inputFile"
+                            accept="image/*" data-title="Drag and drop a file">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="Ekle" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+
+
+</div>

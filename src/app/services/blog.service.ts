@@ -12,8 +12,8 @@ export class BlogService {
 
   constructor(private httpClient: HttpClient, @Inject("baseUrl") private baseUrl: string) { }
 
-  getWithPagination(index: number, size: number) {
-    let newPath = this.baseUrl + `api/blogs/GetWithPagination?index=${index}&size=${size}`
+  getWithPagination(index: number, size: number,filter?:string) {
+    let newPath = this.baseUrl + `api/blogs/GetWithPagination?index=${index}&size=${size}&filter=${filter}`
     return this.httpClient.get<PaginationResult<BlogForListDto>>(newPath);
   }
   getLastBlogs(count: number) {

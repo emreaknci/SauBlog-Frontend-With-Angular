@@ -32,7 +32,7 @@
                 </li>
                 <!--Adminse-->
                 <li>
-                    <a> <span class="nav-label">Bloglar</span></a>
+                    <a routerLink="blog"> <span class="nav-label">Bloglar</span></a>
                 </li>
                 <li>
                     <a data-toggle="collapse" data-bs-toggle="collapse" class="dropdown-toggle"
@@ -76,12 +76,12 @@
                     <a data-toggle="collapse" data-bs-toggle="collapse" class="dropdown-toggle"
                         data-bs-target="#blogForWriterSubmenu">Blog İşlemleri</a>
                     <ul class="collapse list-unstyled" id="blogForWriterSubmenu">
-                        <li><a>Bloglarım</a></li>
-                        <li><a>Yeni Blog</a></li>
+                        <li><a routerLink="blog/my-blogs">Bloglarım</a></li>
+                        <li><a routerLink="blog/add">Yeni Blog</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a routerLink="my-comments">Yorumlarım</a>
+                    <a routerLink="comments/my-comments">Yorumlarım</a>
                 </li>
                 <!--Yazarsa-->
 
