@@ -7,6 +7,8 @@ import { UserComponent } from './user/user.component';
 import { AddComponent as CategoryAddComponent } from './category/add/add.component';
 import { ListComponent as CategoryListComponent } from './category/list/list.component';
 import { EditComponent as CategoryEditComponent } from './category/edit/edit.component';
+import { ListComponent as CommentListComponent} from './comment/list/list.component';
+import { MyCommentsComponent } from './comment/my-comments/my-comments.component';
 
 const routes: Routes = [
   {//account
@@ -27,6 +29,15 @@ const routes: Routes = [
         { path: 'category/list', component: CategoryListComponent },
         { path: 'category/add', component: CategoryAddComponent },
         { path: 'category/edit/:id', component: CategoryEditComponent },
+      ]
+  },
+  {//comment
+    path: 'u', component: UserComponent,
+    children:
+      [
+        { path: '', component: CommentListComponent },
+        { path: 'comments', component: CommentListComponent },
+        { path: 'my-comments', component: MyCommentsComponent },
       ]
   }
 ];

@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CategoryListComponent } from '../../main/category-list/category-list.component';
 
 
 @NgModule({
@@ -25,8 +26,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatButtonModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatPaginatorModule,
+    MatPaginatorModule
 
-  ]
+  ],
+  exports:[]
 })
 export class CategoryModule { }

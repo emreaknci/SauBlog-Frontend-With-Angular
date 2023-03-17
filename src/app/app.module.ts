@@ -9,7 +9,6 @@ import { SpinnerInterceptor } from './interceptors/spinner-interceptor.intercept
 import { ToastrModule } from 'ngx-toastr';
 import { MainModule } from './layouts/main/main.module';
 import { UserModule } from './layouts/user/user.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [

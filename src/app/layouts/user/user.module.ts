@@ -6,6 +6,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user/user.component';
 import { AccountModule } from './account/account.module';
 import { CategoryModule } from './category/category.module';
+import { CommentModule } from './comment/comment.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { CategoryModule } from './category/category.module';
     CommonModule,
     UserRoutingModule, 
     AccountModule,
-    CategoryModule
-  ]
+    CategoryModule,
+    CommentModule
+  ],
+  exports:[]
 })
 export class UserModule { }
