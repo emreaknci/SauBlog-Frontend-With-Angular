@@ -14,41 +14,73 @@
         </div>
 
         <div class="row py-2">
-            <div class="col-5"><hr /></div>
+            <div class="col-5">
+                <hr />
+            </div>
             <div class="col text-center">veya</div>
-            <div class="col-5"><hr /></div>
+            <div class="col-5">
+                <hr />
+            </div>
         </div>
 
         <div class="row">
-            <form asp-action="Register" asp-controller="Auth">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="mb-3">
-                    <label asp-for="NickName" class="form-label">Kullanıcı Adı</label>
-                    <input asp-for="NickName" type="text" class="form-control">
-                    <span asp-for="NickName" class="text-danger"></span>
+                    <label class="form-label">Kullanıcı Adı</label>
+                    <input formControlName="nickName" type="text" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
+                    <div *ngIf="submitted && f['nickName'].errors" class="invalid-feedback">
+                        <div *ngIf="f['nickName'].errors['required']">NickName girmek zorunludur</div>
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="FirstName" class="form-label">Ad</label>
-                    <input asp-for="FirstName" type="text" class="form-control">
-                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                    <label class="form-label">Ad</label>
+                    <input formControlName="firstName" type="text" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
+                    <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+                        <div *ngIf="f['firstName'].errors['required']">Ad girmek zorunludur</div>
+                        <div *ngIf="f['firstName'].errors['minlength']">Adı alanı minimum 2 karakter olmalıdır</div>
+                        <div *ngIf="f['firstName'].errors['maxlength']">Adı alanı maksimum 30 karakter olmalıdır </div>
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="LastName" class="form-label">Soyad</label>
-                    <input asp-for="LastName" type="text" class="form-control">
-                    <span asp-validation-for="LastName" class="text-danger"></span>
+                    <label class="form-label">Soyad</label>
+                    <input formControlName="lastName" type="text" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
+                    <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                        <div *ngIf="f['lastName'].errors['required']">Soyad girmek zorunludur</div>
+                        <div *ngIf="f['lastName'].errors['minlength']">Soyadı alanı minimum 2 karakter olmalıdır</div>
+                        <div *ngIf="f['lastName'].errors['maxlength']">Soyadı alanı maksimum 30 karakter olmalıdır</div>
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="Email" class="form-label">Email</label>
-                    <input asp-for="Email" type="email" class="form-control">
-                    <span asp-validation-for="Email" class="text-danger"></span>
+                    <label class="form-label"> Email</label>
+                    <input formControlName="email" type="email" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+                    <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                        <div *ngIf="f['email'].errors['required']">Email girmek zorunludur</div>
+                        <div *ngIf="f['email'].errors['email']">Geçersiz email adresi</div>
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label asp-for="Password" class="form-label">Şifre</label>
-                    <input asp-for="Password" type="password" class="form-control">
-                    <span asp-for="Password" class="text-danger"></span>
+                    <label class="form-label">Şifre</label>
+                    <input formControlName="password" type="password" class="form-control"
+                        [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                    <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                        <div *ngIf="f['password'].errors['required']">Şifre girmek zorunludur</div>
+                        <div *ngIf="f['password'].errors['missingUpperCase']">En az bir büyük harf girmelisiniz. ([A-Z])
+                        </div>
+                        <div *ngIf="f['password'].errors['missingLowerCase']">En az bir küçük harf girmelisiniz. ([a-z])
+                        </div>
+                        <div *ngIf="f['password'].errors['missingNumber']">En az bir sayı girmelisiniz. ([0-9])</div>
+                        <div *ngIf="f['password'].errors['missingSpecialChar']">En az bir özel karakter girmelisiniz.
+                            ([$&+,:;=?@#|'<>.^*()%!-]) </div>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-outline-success w-100 rounded-5">Kayıt Ol</button>
             </form>
-            <div>Zaten bir hesabın var mı? <a routerLink="/login" class="text-decoration-underline" style="cursor: pointer">Giriş Yap</a></div>
+            <div>Zaten bir hesabın var mı? <a routerLink="/login" class="text-decoration-underline"
+                    style="cursor: pointer">Giriş Yap</a></div>
         </div>
 
     </div>

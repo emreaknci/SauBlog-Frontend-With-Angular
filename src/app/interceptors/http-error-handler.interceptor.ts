@@ -19,8 +19,8 @@ export class HttpErrorHandlerInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
-      catchError((error) => {
-        switch (error.status) {
+      catchError((httpErrorResponse) => {
+        switch (httpErrorResponse.status) {
           case HttpStatusCode.Unauthorized:
             this.toastrService.warning('Bu işlemi yapmak için gerekli yetkiye sahip değilsiniz.', 'Yetkisiz İşlem!');
             this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.routerState.snapshot.url } });
@@ -29,7 +29,13 @@ export class HttpErrorHandlerInterceptor implements HttpInterceptor {
             this.toastrService.warning('Sunucu Hatası!');
             break;
           case HttpStatusCode.BadRequest:
-            this.toastrService.warning("Hata");
+            this.toastrService
+              .warning
+              (
+                httpErrorResponse.error.message
+                  ? httpErrorResponse.error.message
+                  : "Hata"
+              );
             break;
           case HttpStatusCode.NotFound:
             this.toastrService.warning('Sayfa bulunamadı.');
@@ -38,7 +44,7 @@ export class HttpErrorHandlerInterceptor implements HttpInterceptor {
             this.toastrService.warning('Beklenmeyen bir hata ile karşılaşıldı.', 'Hata!');
             break;
         }
-        return of(error);
+        return of(httpErrorResponse);
       })
     );
   }
