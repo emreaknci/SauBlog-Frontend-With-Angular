@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from
 import { ToastrService } from 'ngx-toastr';
 import { WriterForRegisterDto } from 'src/app/models/dtos/writerForRegisterDto';
 import { AuthService } from 'src/app/services/auth.service';
+import { passwordValidator } from 'src/app/utils/customValidators/passwordValidator';
 
 @Component({
   selector: 'app-register',
@@ -28,7 +29,7 @@ export class RegisterComponent {
       firstName: ['', [Validators.required, Validators.maxLength(30), Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.maxLength(30), Validators.minLength(2)]],
       email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.required, this.passwordValidator]],
+      password: ['', [Validators.required, passwordValidator]],
       nickName: ['', [Validators.required]],
     })
   }
@@ -52,27 +53,6 @@ export class RegisterComponent {
     return this.form.controls;
   }
 
-  passwordValidator(control: AbstractControl): { [key: string]: boolean } | null {
-    const upperCaseRegex = /[A-Z]/;
-    const lowerCaseRegex = /[a-z]/;
-    const numberRegex = /[0-9]/;
-    const specialCharRegex = /[$&+,:;=?@#|'<>.^*()%!-]/;
-
-    const hasUpperCase = upperCaseRegex.test(control.value);
-    const hasLowerCase = lowerCaseRegex.test(control.value);
-    const hasNumber = numberRegex.test(control.value);
-    const hasSpecialChar = specialCharRegex.test(control.value);
-
-    if (hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar) {
-      return null;
-    }
-
-    return {
-      missingUpperCase: !hasUpperCase,
-      missingLowerCase: !hasLowerCase,
-      missingNumber: !hasNumber,
-      missingSpecialChar: !hasSpecialChar
-    };
-  }
+ 
 
 }

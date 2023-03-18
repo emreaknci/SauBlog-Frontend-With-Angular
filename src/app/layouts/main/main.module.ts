@@ -20,6 +20,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { LastBlogsComponent } from './last-blogs/last-blogs.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { LastBlogsComponent } from './last-blogs/last-blogs.component';
     MainComponent,
     BlogDetailComponent,
     LastBlogsComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     CommonModule,
