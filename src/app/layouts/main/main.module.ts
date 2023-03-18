@@ -33,7 +33,6 @@ import { LastBlogsComponent } from './last-blogs/last-blogs.component';
     MainComponent,
     BlogDetailComponent,
     LastBlogsComponent,
-
   ],
   imports: [
     CommonModule,

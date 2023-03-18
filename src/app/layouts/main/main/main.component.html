@@ -15,27 +15,27 @@
             <div class="offcanvas-body d-flex justify-content-end">
 
                 <div class="text-dark">
-                    <a class="btn btn-outline-light" routerLink="/login">
+                    <a class="btn btn-outline-light" routerLink="/login" *ngIf="!isLoggedIn">
                         <i class="fa-solid fa-circle-user"></i>Giriş Yap
                     </a>
                 </div>
 
-                <li class="nav-item dropdown d-flex">
+                <li class="nav-item dropdown d-flex" *ngIf="isLoggedIn">
                     <a class="dropdown-toggle text-white btn border border-light mx-auto" id="navbarDropdown"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-user" aria-hidden="true"></i>
-                        Kullanıcı Adı
+                        {{currentUserEmail}}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item">
+                        <a class="dropdown-item" routerLink="/u">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             Hesabım
                         </a>
-                        <a class="dropdown-item">
+                        <a class="dropdown-item"  routerLink="/u/change-password">
                             <i class="fa fa-user-secret" aria-hidden="true"></i>
                             Şifremi Değiştir
                         </a>
-                        <a class="dropdown-item">
+                        <a class="dropdown-item" style="cursor: pointer;" (click)="logOut()">
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                             Çıkış Yap
                         </a>

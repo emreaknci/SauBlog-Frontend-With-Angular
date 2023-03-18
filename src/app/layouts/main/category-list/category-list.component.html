@@ -11,8 +11,8 @@
         <mat-list>
             <div *ngFor="let item of categories">
 
-                <mat-list-item>
-                    <span matListItemTitle> {{item.name}}
+                <mat-list-item routerLink="u" style="cursor:pointer">
+                    <span  matListItemTitle> {{item.name}} 
                         <span class="badge bg-primary rounded-pill">
                             {{item.blogCount}}
                         </span>

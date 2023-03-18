@@ -1,4 +1,9 @@
 <div class="row">
+    <mat-form-field class="px-5">
+        <mat-label>Bloglarda Ara</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+    </mat-form-field>
+
     <div *ngFor="let item of blogForList" class="col-md-6 p-0">
         <mat-card class="example-card mx-5 mb-5">
             <mat-card-header>
@@ -16,13 +21,8 @@
         </mat-card>
     </div>
 
-    <mat-paginator #paginator class="demo-paginator" 
-    (page)="handlePageEvent($event)" [length]="length"
-        [pageSize]="pageSize" 
-        [showFirstLastButtons]="true"
-         [pageSizeOptions]="[4,6,8]" 
-         [hidePageSize]="false"
-        [pageIndex]="pageIndex" 
-        aria-label="Select page">
+    <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="length"
+        [pageSize]="pageSize" [showFirstLastButtons]="true" [pageSizeOptions]="[4,6,8]" [hidePageSize]="false"
+        [pageIndex]="pageIndex" aria-label="Select page">
     </mat-paginator>
 </div>

@@ -9,25 +9,27 @@ import { AddComponent as CategoryAddComponent } from './category/add/add.compone
 import { ListComponent as CategoryListComponent } from './category/list/list.component';
 import { EditComponent as CategoryEditComponent } from './category/edit/edit.component';
 
-import { ListComponent as CommentListComponent} from './comment/list/list.component';
+import { ListComponent as CommentListComponent } from './comment/list/list.component';
 import { MyCommentsComponent } from './comment/my-comments/my-comments.component';
 
-import { ListComponent as BlogListComponent } from'./blog/list/list.component' 
-import { MyBlogsComponent} from'./blog/my-blogs/my-blogs.component' 
-import { AddComponent as BlogAddComponent} from'./blog/add/add.component' 
+import { ListComponent as BlogListComponent } from './blog/list/list.component'
+import { MyBlogsComponent } from './blog/my-blogs/my-blogs.component'
+import { AddComponent as BlogAddComponent } from './blog/add/add.component'
+import { AuthGuard } from 'src/app/guards/auth.guard';
 const routes: Routes = [
   {//account
-    path: 'u', component: UserComponent,
+    path: 'u', component: UserComponent, canActivate: [AuthGuard],
     children:
       [
         { path: '', component: EditProfileComponent },
         { path: 'edit-profile', component: EditProfileComponent },
         { path: 'change-password', component: ChangePasswordComponent },
         { path: 'change-nick-name', component: ChangeNickNameComponent },
-      ]
+      ],
+
   },
   {//category
-    path: 'u', component: UserComponent,
+    path: 'u', component: UserComponent, canActivate: [AuthGuard],
     children:
       [
         { path: 'category', component: CategoryListComponent },
@@ -37,7 +39,7 @@ const routes: Routes = [
       ]
   },
   {//comment
-    path: 'u', component: UserComponent,
+    path: 'u', component: UserComponent, canActivate: [AuthGuard],
     children:
       [
         { path: 'comments', component: CommentListComponent },
@@ -45,7 +47,7 @@ const routes: Routes = [
       ]
   },
   {//blog
-    path: 'u', component: UserComponent,
+    path: 'u', component: UserComponent, canActivate: [AuthGuard],
     children:
       [
         { path: 'blog', component: BlogListComponent },

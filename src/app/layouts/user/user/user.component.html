@@ -89,7 +89,7 @@
                     <a routerLink="/">Siteye Git</a>
                 </li>
                 <li>
-                    <a>Çıkış Yap</a>
+                    <a style="cursor: pointer;" (click)="logOut()">Çıkış Yap</a>
                 </li>
             </ul>
         </div>
@@ -121,7 +121,7 @@
                             <a routerLink="/" class="nav-link">Siteye Git</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link">Çıkış Yap</a>
+                            <a class="nav-link" style="cursor: pointer;" (click)="logOut()" routerLink="/">Çıkış Yap</a>
                         </li>
                     </ul>
                 </div>
