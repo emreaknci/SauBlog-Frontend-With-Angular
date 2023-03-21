@@ -78,5 +78,10 @@ export class AuthService {
       ? this.decodeJwt().email
       : null
   }
+  getCurrentUserId() {
+    return this.isAuthenticated()
+      ? this.decodeJwt()['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']
+      : null
+  }
 }
 

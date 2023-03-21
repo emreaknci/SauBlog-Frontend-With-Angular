@@ -10,25 +10,29 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
+import { FileUploadModule } from "../../../components/file-upload/file-upload.module";
+import { ImageSliderModule } from 'src/app/components/image-slider/image-slider.module';
 
 
 
 @NgModule({
-  declarations: [
-    ListComponent,
-    MyBlogsComponent,
-    AddComponent,
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSelectModule
-  ]
+    declarations: [
+        ListComponent,
+        MyBlogsComponent,
+        AddComponent,
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSelectModule,
+        FileUploadModule,
+        ImageSliderModule
+    ]
 })
 export class BlogModule { }

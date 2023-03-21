@@ -28,7 +28,7 @@
                 <div class="mb-3">
                     <label class="form-label">Kullanıcı Adı</label>
                     <input formControlName="nickName" type="text" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
+                        [ngClass]="{ 'is-invalid': submitted && f['nickName'].errors }">
                     <div *ngIf="submitted && f['nickName'].errors" class="invalid-feedback">
                         <div *ngIf="f['nickName'].errors['required']">NickName girmek zorunludur</div>
                     </div>
