@@ -8,6 +8,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { ChangeNickNameComponent } from './change-nick-name/change-nick-name.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -19,6 +20,7 @@ import { ChangeNickNameComponent } from './change-nick-name/change-nick-name.com
   ],
   imports: [
     CommonModule,
+    RouterModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,

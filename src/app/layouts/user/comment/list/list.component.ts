@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { CommentForPaginationRequest } from 'src/app/models/commentForPaginationRequest';
 import { CommentForListDto } from 'src/app/models/dtos/commentForListDto';
 import { CommentService } from 'src/app/services/comment.service';
 
@@ -21,11 +22,17 @@ export class ListComponent implements OnInit {
 
   }
   ngOnInit(): void {
-
+    this.getWithPagination(this.params);
   }
+  params: CommentForPaginationRequest={
+    index: 0,
+    size: 5,
+    searchValueField:"name",
+    searchValue:this.filterValue
+  };
 
-  getWithPagination(index: number = 0, size: number = 5, filter: string = '') {
-    this.commentService.getWithPagination(index, size, filter).subscribe((response) => {
+  getWithPagination(params: CommentForPaginationRequest) {
+    this.commentService.getWithPagination(params).subscribe((response) => {
       this.comments = response.items;
       this.dataSource = new MatTableDataSource<CommentForListDto>(response.items);
       this.paginator.pageSize = response.size;
@@ -33,15 +40,20 @@ export class ListComponent implements OnInit {
       this.paginator.length = response.count;
     })
   }
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
   pageChanged() {
-    this.getWithPagination(this.paginator.pageIndex, this.paginator.pageSize, this.filterValue);
+    this.params.size = this.paginator.pageSize;
+    this.params.index = this.paginator.pageIndex;
+    this.params.searchValue = this.filterValue;
+    this.getWithPagination(this.params);
   }
   applyFilter(event: Event) {
     setTimeout(() => {
-      this.getWithPagination(this.paginator.pageIndex, this.paginator.pageSize, this.filterValue);
+      this.setParams();
+      this.getWithPagination(this.params);
 
       this.filterValue = (event.target as HTMLInputElement).value;
 
@@ -52,6 +64,11 @@ export class ListComponent implements OnInit {
       }
     }, 1000);
 
+  }
+  setParams(){
+    this.params.index=this.paginator.pageIndex;
+    this.params.size=this.paginator.pageSize;
+    this.params.searchValue=this.filterValue;
   }
 
 }

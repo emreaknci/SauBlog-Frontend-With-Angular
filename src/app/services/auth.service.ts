@@ -30,9 +30,9 @@ export class AuthService {
     let newPath = this.baseUrl + `api/auth/sendResetPassword?email=${email}`;
     return this.httpClient.post<Result>(newPath, null);
   }
-  verifyResetToken(resetPasswordToken:string){
+  verifyResetToken(resetPasswordToken: string) {
     let newPath = this.baseUrl + `api/auth/verifyResetToken?resetToken=${resetPasswordToken}==`;
-    return this.httpClient.post<DataResult<ResetPasswordToken>>(newPath,null);
+    return this.httpClient.post<DataResult<ResetPasswordToken>>(newPath, null);
   }
   resetPassword(dto: ResetPasswordDto) {
     let newPath = this.baseUrl + `api/auth/resetPassword`
@@ -82,6 +82,18 @@ export class AuthService {
     return this.isAuthenticated()
       ? this.decodeJwt()['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']
       : null
+  }
+  isCurrentUserAWriter(): boolean {
+    for (let i = 0; i < this.getCurrentUserRoles().length; i++) {
+      const role = this.getCurrentUserRoles()[i];
+      if (role.toLowerCase() == "writer")
+        return true;
+    }
+    return false;
+  }
+  getCurrentUserRoles() {
+    var roles: string[] = this.decodeJwt()['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] 
+    return roles;
   }
 }
 

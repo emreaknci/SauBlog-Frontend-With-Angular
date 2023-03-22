@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MyCommentsComponent } from './my-comments/my-comments.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { MyCommentsComponent } from './my-comments/my-comments.component';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,

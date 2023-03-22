@@ -1,0 +1,16 @@
+<div *ngIf="comments">
+    <div class="card m-3" *ngFor="let item of comments.reverse()">
+        <div class="row">
+            <div class="col-md-2 m-auto text-center p-3">
+                <img class="w-75 rounded rounded-circle" src="{{userImg}}" alt="">
+                <h5 class="card-title"> {{item.writer.nickName}}</h5>
+            </div>
+            <div class="col-md">
+                <div class="card-body">
+                    <p class="card-text">{{item.content}}</p>
+                    <p class="card-text"><small class="text-muted"> {{item.createdDate}}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

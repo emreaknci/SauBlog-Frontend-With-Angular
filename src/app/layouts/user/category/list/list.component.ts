@@ -30,7 +30,7 @@ export class ListComponent implements AfterViewInit, OnInit {
   params: CategoryForPaginationRequest={
     index: 0,
     size: 5,
-    searchValueField:"content",
+    searchValueField:"name",
     searchValue:this.filterValue
   };
 

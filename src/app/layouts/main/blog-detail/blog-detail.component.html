@@ -1,3 +1,24 @@
-<div class="row">
-   sasad
+<div class="container pt-5" *ngIf="blog">
+   <div class="row">
+      <div class="col-lg-9">
+         <div class="card border-0 mb-3">
+            <img src="{{imagePath}}/{{blog.imagePath}}" style="height: 50%; height: 50%" class="card-img-top mx-auto"
+               alt="...">
+            <div class="card-body">
+               <h5 class="card-title">{{blog.title}}</h5>
+               <p class="card-text">
+                  {{blog.content}}
+               </p>
+               <p class="card-text"><small class="text-muted">{{blog.createdDate}}</small></p>
+               <p class="card-text">
+                  <small class="text-muted">
+                     <a class="btn btn-outline-info">Yazara Git &raquo; {{blog.writer.nickName}}</a>
+                  </small>
+               </p>
+            </div>
+         </div>
+         <app-comment-add [blogId]="blog.id" (addedComment)="onCommentAdded($event)"></app-comment-add>
+         <app-comment-list [comments]="blog.comments"></app-comment-list>
+      </div>
+   </div>
 </div>

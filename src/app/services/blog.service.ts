@@ -37,6 +37,11 @@ export class BlogService {
     let newPath = this.baseUrl + `api/blogs/getLastBlogs?count=${count}`
     return this.httpClient.get<DataResult<LastBlogDto>>(newPath);
   }
+  getByIdWithDetails(id: number) {
+    let newPath = this.baseUrl + `api/blogs/getByIdWithDetails?id=${id}`
+    return this.httpClient.get<DataResult<Blog>>(newPath);
+  }
+  
   private setPaginationParams(req: BlogForPaginationRequest) {
     let params = new HttpParams()
       .set("Index", req.index)

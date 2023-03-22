@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { CategoryListComponent } from '../../main/category-list/category-list.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { CategoryListComponent } from '../../main/category-list/category-list.co
   ],
   imports: [
     CommonModule,
+    RouterModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,

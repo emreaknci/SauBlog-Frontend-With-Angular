@@ -21,6 +21,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { LastBlogsComponent } from './last-blogs/last-blogs.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { CommentListComponent } from './comment-list/comment-list.component';
+import { CommentAddComponent } from './comment-add/comment-add.component';
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     BlogDetailComponent,
     LastBlogsComponent,
     ResetPasswordComponent,
+    CommentListComponent,
+    CommentAddComponent,
   ],
   imports: [
     CommonModule,

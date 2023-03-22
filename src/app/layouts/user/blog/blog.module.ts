@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { FileUploadModule } from "../../../components/file-upload/file-upload.module";
 import { ImageSliderModule } from 'src/app/components/image-slider/image-slider.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -23,6 +24,7 @@ import { ImageSliderModule } from 'src/app/components/image-slider/image-slider.
     ],
     imports: [
         CommonModule,
+        RouterModule,
         FormsModule,
         MatFormFieldModule,
         MatInputModule,

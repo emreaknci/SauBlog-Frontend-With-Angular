@@ -1,0 +1,54 @@
+<div *ngIf="isLoggedIn">
+    <div *ngIf="isWriter&&writer">
+        <form (submit)="onSubmit()">
+            <div class="card m-3">
+                <div class="row">
+                    <div class="col-md-2 m-auto text-center p-3">
+                        <img class="w-75 rounded rounded-circle" src="{{userImg}}">
+                        <h5 class="card-title">{{writer.nickName}}</h5>
+                    </div>
+                    <div class="col-md">
+                        <div class="card-body">
+                            <textarea #textbox (change)="content=textbox.value" class="w-100 bg-light" rows="6"></textarea>
+                            <button class="rounded-3 btn btn-outline-success w-100" [disabled]="content.length==0">Gönder</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="!isWriter">
+        <div class="card m-3">
+            <div class="row">
+                <div class="col-md-2 m-auto text-center p-3">
+                    <img class="w-75 rounded rounded-circle" src="{{userImg}}" alt=" ">
+                    <h5 class="card-title"></h5>
+                </div>
+                <div class="col-md">
+                    <div class="card-body">
+                        <textarea class="w-100 bg-light" rows="6"
+                            disabled="disabled">Yorum yapmak için yazar olmalısınız</textarea>
+                        <button class="rounded-3 btn btn-outline-success" disabled="disabled">Gönder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!isLoggedIn">
+    <div class="card m-3">
+        <div class="row">
+            <div class="col-md-2 m-auto text-center p-3">
+                <img class="w-75 rounded rounded-circle" src="{{userImg}}" alt=" ">
+                <h5 class="card-title"></h5>
+            </div>
+            <div class="col-md">
+                <div class="card-body">
+                    <textarea class="w-100 bg-light" rows="6"
+                        disabled="disabled">Yorum yapmak için giriş yapmalısnız</textarea>
+                    <button class="rounded-3 btn btn-outline-success" disabled="disabled">Gönder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
