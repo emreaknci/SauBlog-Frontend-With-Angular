@@ -19,7 +19,7 @@ import { BlogModule } from './blog/blog.module';
     AccountModule,
     CategoryModule,
     CommentModule,
-    BlogModule
+    BlogModule,
   ],
   exports:[]
 })

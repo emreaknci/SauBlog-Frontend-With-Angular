@@ -22,7 +22,7 @@
     </div>
 
     <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)" [length]="length"
-        [pageSize]="pageSize" [showFirstLastButtons]="true" [pageSizeOptions]="[4,6,8]" [hidePageSize]="false"
-        [pageIndex]="pageIndex" aria-label="Select page">
+        [pageSize]="params.size" [showFirstLastButtons]="true" [pageSizeOptions]="[4,6,8]" [hidePageSize]="false"
+        [pageIndex]="params.index" aria-label="Select page">
     </mat-paginator>
 </div>

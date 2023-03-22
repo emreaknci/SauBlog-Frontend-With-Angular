@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { BlogForPaginationRequest } from 'src/app/models/blogForPaginationRequest';
 import { BlogForListDto } from 'src/app/models/dtos/blogForListDto';
 import { BlogService } from 'src/app/services/blog.service';
 
@@ -14,37 +15,53 @@ export class BlogComponent implements OnInit {
   blogForList: BlogForListDto[] = [];
   filterValue: string = '';
   ngOnInit(): void {
-    this.getWithPagination()
+    this.setParams();
+    console.log(this.params)
+    this.getWithPagination(this.params)
   }
-  getWithPagination(index: number = this.pageIndex, size: number = this.pageSize, filter: string = '') {
-    this.blogService.getWithPagination(index, size, filter).subscribe((response) => {
+  getWithPagination(params: BlogForPaginationRequest) {
+    this.blogService.getWithPagination(params).subscribe((response) => {
       this.length = response.count;
       this.blogForList = response.items;
     })
   }
   length;
-  pageSize = 4;
-  pageIndex = 0;
+  params: BlogForPaginationRequest={
+    index:0,
+    size:4,
+    searchValue:this.filterValue,
+    searchValueField:"title",
+    orderType:"desc",
+    orderByField:"id",
+  };
 
 
   pageEvent: PageEvent;
   handlePageEvent(e: PageEvent) {
     this.pageEvent = e;
     this.length = e.length;
-    this.pageSize = e.pageSize;
-    this.pageIndex = e.pageIndex;
-    this.getWithPagination(e.pageIndex, e.pageSize);
+    this.params.index=e.pageIndex;
+    this.params.size=e.pageSize;
+    console.log(this.params)
+    this.getWithPagination(this.params);
   }
 
   applyFilter(event: Event) {
     setTimeout(() => {
-      this.getWithPagination(this.pageIndex, this.pageSize, this.filterValue);
+      console.log(this.params)
 
+      this.getWithPagination(this.params);
       this.filterValue = (event.target as HTMLInputElement).value;
-
+      this.params.searchValue=this.filterValue;
+      console.log(this.params)
 
     }, 1000);
 
   }
-
+  setParams() {
+    this.params.index = 0;
+    this.params.size = 4;
+    this.params.searchValue = this.filterValue;
+    this.params.searchValueField = "title";
+  }
 }

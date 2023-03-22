@@ -41,7 +41,7 @@ export class RegisterComponent {
 
     let dto: WriterForRegisterDto = Object.assign({}, this.form.value);
     this.authService.registerForWriter(dto).subscribe({
-      next:(v)=>{this.toastrService.warning(v.message)},
+      next:(v)=>{this.toastrService.success(v.message)},
       error:(e)=>{this.toastrService.warning(e.error.message)},
       complete:()=>{},
     })

@@ -18,13 +18,11 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
       <td class="text-capitalize" mat-cell *matCellDef="let row"> {{row.title}} </td>
     </ng-container>
-
     <!-- Writer Column -->
     <ng-container matColumnDef="writerNickName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Writer </th>
       <td class="text-capitalize" mat-cell *matCellDef="let row"> {{row.writerNickName}} </td>
     </ng-container>
-
     <!-- Comment Count Column -->
     <ng-container matColumnDef="commentCount">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Comment Count </th>

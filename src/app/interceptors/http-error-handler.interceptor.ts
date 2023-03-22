@@ -51,7 +51,7 @@ export class HttpErrorHandlerInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((httpErrorResponse: HttpErrorResponse) => {
         if (httpErrorResponse.status === HttpStatusCode.Unauthorized) {
-          this.toastrService.warning('Bu işlemi yapmak için gerekli yetkiye sahip değilsiniz.', 'Yetkisiz İşlem!');
+          this.toastrService.warning('Bu işleme devam edebilmek için giriş yapmalısınız.');
           this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.routerState.snapshot.url } });
         }
         if (httpErrorResponse.status === HttpStatusCode.InternalServerError) {
@@ -62,6 +62,13 @@ export class HttpErrorHandlerInterceptor implements HttpInterceptor {
         }
         if (httpErrorResponse.status === HttpStatusCode.BadRequest) {
           this.toastrService.warning(httpErrorResponse.error.message);
+          return throwError(() => new Error(httpErrorResponse.error.message));
+        }
+        if (httpErrorResponse.status === HttpStatusCode.Forbidden) {
+          console.log(httpErrorResponse)
+          this.toastrService.warning("Bu işlemi yapmak için gerekli yetkiye sahip değilsiniz", 'Yetkisiz Erişim!');
+          this.router.navigate(['/forbidden']);
+
           return throwError(() => new Error(httpErrorResponse.error.message));
         }
         this.toastrService.warning('Beklenmeyen bir hata ile karşılaşıldı.', 'Hata!')

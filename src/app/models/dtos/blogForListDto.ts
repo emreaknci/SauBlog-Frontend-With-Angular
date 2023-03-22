@@ -4,6 +4,7 @@ export interface BlogForListDto {
     commentCount?: number;
     title?: String;
     writerNickName?: String;
+    writerId?:number;
     imagePath?: String;
     createdDate?: Date;
     status?: Boolean;

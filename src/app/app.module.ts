@@ -14,11 +14,13 @@ import { RouterModule } from '@angular/router';
 import { HttpErrorHandlerInterceptor } from './interceptors/http-error-handler.interceptor';
 import { ErrorNotFoundComponent } from './components/error-not-found/error-not-found.component';
 import { JwtModule } from '@auth0/angular-jwt';
+import { ErrorForbiddenComponent } from './components/error-forbidden/error-forbidden.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorNotFoundComponent,
+    ErrorForbiddenComponent,
   ],
   imports: [
     BrowserModule,

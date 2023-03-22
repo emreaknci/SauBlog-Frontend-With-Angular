@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { filter } from 'rxjs';
+import { BlogForPaginationRequest } from 'src/app/models/blogForPaginationRequest';
 import { Category } from 'src/app/models/category';
 import { BlogForListDto } from 'src/app/models/dtos/blogForListDto';
 import { BlogService } from 'src/app/services/blog.service';
@@ -23,11 +25,17 @@ export class ListComponent implements AfterViewInit, OnInit {
   }
   blogs: BlogForListDto[];
   ngOnInit(): void {
-    this.getWithPagination()
+    this.getWithPagination(this.params)
   }
+  params: BlogForPaginationRequest={
+    index: 0,
+    size: 5,
+    searchValueField:"title",
+    searchValue:this.filterValue
+  };
 
-  getWithPagination(index: number = 0, size: number = 5, filter: string = '') {
-    this.blogService.getWithPagination(index, size, filter).subscribe((response) => {
+  getWithPagination(params: BlogForPaginationRequest) {
+    this.blogService.getWithPagination(params).subscribe((response) => {
       this.blogs = response.items;
       this.dataSource = new MatTableDataSource<BlogForListDto>(response.items);
       this.paginator.pageSize = response.size;
@@ -40,11 +48,15 @@ export class ListComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
   }
   pageChanged() {
-    this.getWithPagination(this.paginator.pageIndex, this.paginator.pageSize, this.filterValue);
+    this.params.size = this.paginator.pageSize;
+    this.params.index = this.paginator.pageIndex;
+    this.params.searchValue = this.filterValue;
+    this.getWithPagination(this.params);
   }
   applyFilter(event: Event) {
     setTimeout(() => {
-      this.getWithPagination(this.paginator.pageIndex, this.paginator.pageSize, this.filterValue);
+      this.setParams();
+      this.getWithPagination(this.params);
 
       this.filterValue = (event.target as HTMLInputElement).value;
 
@@ -55,5 +67,10 @@ export class ListComponent implements AfterViewInit, OnInit {
       }
     }, 1000);
 
+  }
+  setParams(){
+    this.params.index=this.paginator.pageIndex;
+    this.params.size=this.paginator.pageSize;
+    this.params.searchValue=this.filterValue;
   }
 }

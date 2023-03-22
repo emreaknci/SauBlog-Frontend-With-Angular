@@ -1,8 +1,11 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { BlogForPaginationRequest } from 'src/app/models/blogForPaginationRequest';
 import { BlogForListDto } from 'src/app/models/dtos/blogForListDto';
+import { AuthService } from 'src/app/services/auth.service';
 import { BlogService } from 'src/app/services/blog.service';
+import { WriterService } from 'src/app/services/writer.service';
 
 @Component({
   selector: 'app-my-blogs',
@@ -16,16 +19,21 @@ export class MyBlogsComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private blogService: BlogService) {
-
     this.dataSource = new MatTableDataSource(this.blogs);
   }
   blogs: BlogForListDto[];
   ngOnInit(): void {
-    this.getWithPagination()
+    this.getCurrentWriterBlogs(this.params)
   }
+  params: BlogForPaginationRequest={
+    index: 0,
+    size: 5,
+    searchValueField:"title",
+    searchValue:this.filterValue
+  };
 
-  getWithPagination(index: number = 0, size: number = 5, filter: string = '') {
-    this.blogService.getWithPagination(index, size, filter).subscribe((response) => {
+  getCurrentWriterBlogs(params: BlogForPaginationRequest) {
+    this.blogService.getCurrentWriterBlogs(params).subscribe((response) => {
       this.blogs = response.items;
       this.dataSource = new MatTableDataSource<BlogForListDto>(response.items);
       this.paginator.pageSize = response.size;
@@ -38,11 +46,15 @@ export class MyBlogsComponent implements AfterViewInit, OnInit {
     this.dataSource.paginator = this.paginator;
   }
   pageChanged() {
-    this.getWithPagination(this.paginator.pageIndex, this.paginator.pageSize, this.filterValue);
+    this.params.size = this.paginator.pageSize;
+    this.params.index = this.paginator.pageIndex;
+    this.params.searchValue = this.filterValue;
+    this.getCurrentWriterBlogs(this.params);
   }
   applyFilter(event: Event) {
     setTimeout(() => {
-      this.getWithPagination(this.paginator.pageIndex, this.paginator.pageSize, this.filterValue);
+      this.setParams();
+      this.getCurrentWriterBlogs(this.params);
 
       this.filterValue = (event.target as HTMLInputElement).value;
 
@@ -53,5 +65,10 @@ export class MyBlogsComponent implements AfterViewInit, OnInit {
       }
     }, 1000);
 
+  }
+  setParams(){
+    this.params.index=this.paginator.pageIndex;
+    this.params.size=this.paginator.pageSize;
+    this.params.searchValue=this.filterValue;
   }
 }
