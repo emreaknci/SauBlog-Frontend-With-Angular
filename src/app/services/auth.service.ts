@@ -91,6 +91,14 @@ export class AuthService {
     }
     return false;
   }
+  isCurrentUserAnAdmin(): boolean {
+    for (let i = 0; i < this.getCurrentUserRoles().length; i++) {
+      const role = this.getCurrentUserRoles()[i];
+      if (role.toLowerCase() == "admin")
+        return true;
+    }
+    return false;
+  }
   getCurrentUserRoles() {
     var roles: string[] = this.decodeJwt()['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] 
     return roles;

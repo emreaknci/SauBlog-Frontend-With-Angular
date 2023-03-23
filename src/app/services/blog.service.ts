@@ -43,15 +43,24 @@ export class BlogService {
   }
   
   private setPaginationParams(req: BlogForPaginationRequest) {
+    console.log("params=>", req)
     let params = new HttpParams()
-      .set("Index", req.index)
-      .set("Size", req.size)
-      .set("OrderByField", req.orderByField)
-      .set("OrderType", req.orderType)
-      .set("SearchValue", req.searchValue)
-      .set("searchValueField", req.searchValueField)
-    req.categoryIds?.forEach(id => params.set("categoryIds", id));
-    req.writerIds?.forEach(id => params.set("writerIds", id));
+      .append("Index", req.index)
+      .append("Size", req.size)
+      .append("OrderByField", req.orderByField)
+      .append("OrderType", req.orderType)
+      .append("SearchValue", req.searchValue)
+      .append("searchValueField", req.searchValueField)
+
+      req.categoryIds?.forEach(id => {
+        params = params.append("categoryIds", id);
+      });
+      
+      req.writerIds?.forEach(id => {
+        params = params.append("writerIds", id);
+      });
+  
+
     return params;
 
   }

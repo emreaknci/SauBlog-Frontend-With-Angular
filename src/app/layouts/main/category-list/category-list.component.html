@@ -11,7 +11,8 @@
         <mat-list>
             <div *ngFor="let item of categories">
 
-                <mat-list-item routerLink="u" style="cursor:pointer">
+                <mat-list-item [routerLink]="['blogs/category', item.id]"
+                routerLinkActive="router-link-active" style="cursor:pointer">
                     <span  matListItemTitle> {{item.name}} 
                         <span class="badge bg-primary rounded-pill">
                             {{item.blogCount}}

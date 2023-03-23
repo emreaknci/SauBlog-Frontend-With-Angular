@@ -2,8 +2,8 @@
     <div class="card m-3" *ngFor="let item of comments.reverse()">
         <div class="row">
             <div class="col-md-2 m-auto text-center p-3">
-                <img class="w-75 rounded rounded-circle" src="{{userImg}}" alt="">
-                <h5 class="card-title"> {{item.writer.nickName}}</h5>
+                <img style="cursor: pointer;" routerLink="/writer-detail/{{item.writer.id}}" class="w-75 rounded rounded-circle" src="{{userImg}}" alt="">
+                <h5 style="cursor: pointer;" routerLink="/writer-detail/{{item.writer.id}}" class="card-title"> {{item.writer.nickName}}</h5>
             </div>
             <div class="col-md">
                 <div class="card-body">

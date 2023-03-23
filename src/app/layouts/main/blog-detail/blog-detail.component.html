@@ -7,12 +7,24 @@
             <div class="card-body">
                <h5 class="card-title">{{blog.title}}</h5>
                <p class="card-text">
+                  <span class="row">
+                     <span class="col-md-3" *ngFor="let item of blog.categories">
+                        <a class="text-secondary border rounded-2 border-secondary m-2 p-2"
+                           style="text-decoration: none; cursor: pointer;" [routerLink]="['/blogs/category',item.id]"
+                           routerLinkActive="router-link-active">
+                           {{item.name}}
+                        </a>
+                     </span>
+                  </span>
+                  <br>
+                  <br>
                   {{blog.content}}
                </p>
                <p class="card-text"><small class="text-muted">{{blog.createdDate}}</small></p>
                <p class="card-text">
                   <small class="text-muted">
-                     <a class="btn btn-outline-info">Yazara Git &raquo; {{blog.writer.nickName}}</a>
+                     <a class="btn btn-outline-secondary" [routerLink]="['/writer-detail',blog.writer.id]"
+                     routerLinkActive="router-link-active">Yazara Git &raquo; {{blog.writer.nickName}}</a>
                   </small>
                </p>
             </div>

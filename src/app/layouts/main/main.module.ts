@@ -23,6 +23,7 @@ import { LastBlogsComponent } from './last-blogs/last-blogs.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentAddComponent } from './comment-add/comment-add.component';
+import { WriterDetailComponent } from './writer-detail/writer-detail.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { CommentAddComponent } from './comment-add/comment-add.component';
     ResetPasswordComponent,
     CommentListComponent,
     CommentAddComponent,
+    WriterDetailComponent,
   ],
   imports: [
     CommonModule,

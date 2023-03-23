@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { RegisterComponent } from './register/register.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { WriterDetailComponent } from './writer-detail/writer-detail.component';
 
 const routes: Routes = 
 [
@@ -18,11 +19,14 @@ const routes: Routes =
       { path: '', component: HomeComponent ,children:[
         { path: '', component: BlogComponent },
         { path: 'blogs', component: BlogComponent },
+        { path: 'blogs/category/:id', component: BlogComponent },
+        { path: 'blogs/writer/:id', component: BlogComponent },
         { path: 'blog-detail/:id', component: BlogDetailComponent},
       ]},
      
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
+      { path: 'writer-detail/:id', component:WriterDetailComponent },
       { path: 'forgot-password', component: ForgotPasswordComponent },      
       { path: 'reset-password/:reset-password-token', component: ResetPasswordComponent},      
     ]

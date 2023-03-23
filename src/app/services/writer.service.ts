@@ -14,4 +14,8 @@ export class WriterService {
     let newPath = this.baseUrl + `api/Writers/GetByUserId?id=${userId}`;
     return this.httpClient.get<DataResult<Writer>>(newPath);
   }
+  getByIdWithAllInfo(id: number) {
+    let newPath = this.baseUrl + `api/Writers/getByIdWithAllInfo?id=${id}`;
+    return this.httpClient.get<DataResult<Writer>>(newPath);
+  }
 }
