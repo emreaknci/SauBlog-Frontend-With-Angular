@@ -1,13 +1,13 @@
-<div class="row my-5">
+<div class="row my-5" *ngIf="writer">
 
     <div class="offset-3 col-6">
         <h2 class="fw-bold">Nick Değiştir</h2>
 
-        <form asp-controller="Writer" asp-action="EditNickName" asp-area="User">
+        <form (submit)="onSubmit()">
             <div class="mb-3 row">
                 <mat-form-field class="w-100" appearance="fill">
                     <mat-label>NickName</mat-label>
-                    <input matInput placeholder="">
+                    <input #nickName (keyup)="newNickName=nickName.value" matInput [value]="currentNickName">
                 </mat-form-field>
             </div>
 

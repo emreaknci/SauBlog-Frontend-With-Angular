@@ -4,8 +4,8 @@ import { Blog } from "./blog";
 import { Comment } from "./comment";
 
 export interface Writer extends BaseEntity{
-    userId?:String;
-    nickName?:String;
+    userId?:string;
+    nickName?:string;
     blogs?:Blog[];
     comments?:Comment[];
     user?:User;

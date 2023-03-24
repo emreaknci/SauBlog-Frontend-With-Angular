@@ -5,7 +5,7 @@
             <a href="#" class="img logo rounded-circle mb-5"
                 style="background-image: url(https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png);"></a>
             <div class="d-flex justify-content-center">
-                Kullanıcı Adı
+                {{userEmail}}
             </div>
             <ul class="list-unstyled components mb-5">
                 <li>
@@ -18,23 +18,19 @@
                         <li>
                             <a routerLink="change-password">Şifre Değiştir</a>
                         </li>
-
-
                         <li>
                             <a routerLink="change-nick-name">NickName Değiştir</a>
                         </li>
-
-
                         <li>
                             <a>Hesabımı Sil</a>
                         </li>
                     </ul>
                 </li>
-                <!--Adminse-->
-                <li>
+
+                <li *ngIf="isAdmin">
                     <a routerLink="blog"> <span class="nav-label">Bloglar</span></a>
                 </li>
-                <li>
+                <li *ngIf="isAdmin">
                     <a data-toggle="collapse" data-bs-toggle="collapse" class="dropdown-toggle"
                         data-bs-target="#categorySubmenu">Kategori
                         İşlemleri</a>
@@ -47,7 +43,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li *ngIf="isAdmin">
                     <a data-toggle="collapse" data-bs-toggle="collapse" class="dropdown-toggle"
                         data-bs-target="#commentSubmenu">Yorum
                         İşlemleri</a>
@@ -55,9 +51,7 @@
                         <li><a routerLink="comments">Yorumlar</a></li>
                     </ul>
                 </li>
-
-
-                <li>
+                <li *ngIf="isAdmin">
                     <a data-toggle="collapse" data-bs-toggle="collapse" class="dropdown-toggle"
                         data-bs-target="#roleSubmenu">Yetki
                         İşlemleri</a>
@@ -68,11 +62,9 @@
                         </li>
                     </ul>
                 </li>
-                <!--Adminse-->
 
 
-                <!--Yazarsa-->
-                <li>
+                <li *ngIf="isWriter">
                     <a data-toggle="collapse" data-bs-toggle="collapse" class="dropdown-toggle"
                         data-bs-target="#blogForWriterSubmenu">Blog İşlemleri</a>
                     <ul class="collapse list-unstyled" id="blogForWriterSubmenu">
@@ -83,7 +75,6 @@
                 <li>
                     <a routerLink="comments/my-comments">Yorumlarım</a>
                 </li>
-                <!--Yazarsa-->
 
                 <li>
                     <a routerLink="/">Siteye Git</a>

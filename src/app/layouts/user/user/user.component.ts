@@ -8,9 +8,11 @@ declare var $: any;
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  constructor(private authService: AuthService, private toastrService: ToastrService ) { }
+  constructor(private authService: AuthService, private toastrService: ToastrService) { }
   panelOpenState = false;
-
+  isAdmin: boolean = this.authService.isCurrentUserAnAdmin();
+  isWriter: boolean = this.authService.isCurrentUserAWriter();
+  userEmail:string = this.authService.getCurrentUserEmail();
   ngOnInit(): void {
     (function ($) {
 

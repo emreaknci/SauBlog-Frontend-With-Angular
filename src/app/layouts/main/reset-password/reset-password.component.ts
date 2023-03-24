@@ -35,7 +35,7 @@ export class ResetPasswordComponent implements OnInit {
 
   newPassword = this.f['newPassword'].value;
   confirmPassword = this.f['confirmPassword'].value;
-
+  isInvalid:boolean=false;
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       newPassword: ['', [Validators.required, passwordValidator]],
