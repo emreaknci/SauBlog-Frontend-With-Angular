@@ -8,6 +8,7 @@ import { AccountModule } from './account/account.module';
 import { CategoryModule } from './category/category.module';
 import { CommentModule } from './comment/comment.module';
 import { BlogModule } from './blog/blog.module';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -15,12 +16,13 @@ import { BlogModule } from './blog/blog.module';
   ],
   imports: [
     CommonModule,
-    UserRoutingModule, 
+    UserRoutingModule,
     AccountModule,
     CategoryModule,
     CommentModule,
     BlogModule,
   ],
-  exports:[]
+  exports: [],
+  providers: [AuthGuard]
 })
 export class UserModule { }

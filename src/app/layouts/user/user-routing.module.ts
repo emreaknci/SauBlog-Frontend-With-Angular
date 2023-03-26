@@ -15,47 +15,51 @@ import { MyCommentsComponent } from './comment/my-comments/my-comments.component
 import { ListComponent as BlogListComponent } from './blog/list/list.component'
 import { MyBlogsComponent } from './blog/my-blogs/my-blogs.component'
 import { AddComponent as BlogAddComponent } from './blog/add/add.component'
-import { AuthGuard } from 'src/app/guards/auth.guard';
-const routes: Routes = [
-  {//account
-    path: 'u', component: UserComponent, canActivate: [AuthGuard],
-    children:
-      [
-        { path: '', component: EditProfileComponent },
-        { path: 'edit-profile', component: EditProfileComponent },
-        { path: 'change-password', component: ChangePasswordComponent },
-        { path: 'change-nick-name', component: ChangeNickNameComponent },
-      ],
 
-  },
-  {//category
-    path: 'u', component: UserComponent, canActivate: [AuthGuard],
-    children:
-      [
-        { path: 'category', component: CategoryListComponent },
-        { path: 'category/list', component: CategoryListComponent },
-        { path: 'category/add', component: CategoryAddComponent },
-        { path: 'category/edit/:id', component: CategoryEditComponent },
-      ]
-  },
-  {//comment
-    path: 'u', component: UserComponent, canActivate: [AuthGuard],
-    children:
-      [
-        { path: 'comments', component: CommentListComponent },
-        { path: 'comments/my-comments', component: MyCommentsComponent },
-      ]
-  },
-  {//blog
-    path: 'u', component: UserComponent, canActivate: [AuthGuard],
-    children:
-      [
-        { path: 'blog', component: BlogListComponent },
-        { path: 'blog/list', component: BlogListComponent },
-        { path: 'blog/my-blogs', component: MyBlogsComponent },
-        { path: 'blog/add', component: BlogAddComponent },
-      ]
+
+import { AuthGuard, Roles } from 'src/app/guards/auth.guard';
+const routes: Routes = [
+  {
+    path: 'u',
+    component: UserComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '', pathMatch: 'full', redirectTo: 'edit-profile'
+      },
+      { path: 'edit-profile', component: EditProfileComponent },
+      { path: 'change-password', component: ChangePasswordComponent },
+      { path: 'change-nick-name', component: ChangeNickNameComponent },
+      {
+        path: 'category', canActivateChild: [AuthGuard],
+        children: [
+          { path: '', pathMatch: 'full', redirectTo: 'list' },
+          { path: 'list', component: CategoryListComponent, data: { allowedRoles: [Roles.Admin] } },
+          { path: 'add', component: CategoryAddComponent, data: { allowedRoles: [Roles.Admin] } },
+          { path: 'edit/:id', component: CategoryEditComponent, data: { allowedRoles: [Roles.Admin] } }
+        ]
+      },
+      {
+        path: 'comments', canActivateChild: [AuthGuard],
+        children: [
+          { path: '', pathMatch: 'full', redirectTo: 'my-comments' },
+          { path: 'my-comments', component: MyCommentsComponent, data: { allowedRoles: [Roles.Writer] } },
+          { path: 'list', component: CommentListComponent, data: { allowedRoles: [Roles.Admin] } }
+        ]
+      },
+      {
+        path: 'blog',
+        canActivateChild: [AuthGuard],
+        children: [
+          { path: '', pathMatch: 'full', redirectTo: 'my-blogs' },
+          { path: 'my-blogs', component: MyBlogsComponent, data: { allowedRoles: [Roles.Writer] } },
+          { path: 'list', component: BlogListComponent, data: { allowedRoles: [Roles.Admin] } },
+          { path: 'add', component: BlogAddComponent, data: { allowedRoles: [Roles.Writer] } }
+        ]
+      }
+    ]
   }
+
 ];
 
 
