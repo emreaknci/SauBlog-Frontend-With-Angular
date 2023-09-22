@@ -38,8 +38,3 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   }
 
 }
-export enum Roles {
-  Admin = "Admin",
-  Writer = "Writer",
-  User = "User"
-}

@@ -1,0 +1,22 @@
+<div class="row mb-2 p-3">
+    <div class="m-0 p-0 col-12 mb-3">
+        <h3>Adminler</h3>
+        @await Component.InvokeAsync("AssignRole")
+    </div>
+    <div class="col-4 m-0 p-0" *ngFor="let item of admins">
+        <div class="card" style="width: 18rem;">
+            <img src="https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{item.firstName}} {{item.lastName}}</h5>
+                <p class="card-text"><span class="font-weight-bold">Email:</span> {{item.email}}</p>
+                <p class="card-text"><span class="font-weight-bold">Kayıt Tarihi:</span>{{item.createdDate}}</p>
+                <p class="card-text">
+                    <a class="font-weight-bold text-danger">
+                        Yetki Al
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

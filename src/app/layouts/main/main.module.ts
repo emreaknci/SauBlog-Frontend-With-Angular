@@ -24,6 +24,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { CommentAddComponent } from './comment-add/comment-add.component';
 import { WriterDetailComponent } from './writer-detail/writer-detail.component';
+import { DialogModule } from 'src/app/components/dialog/dialog.module';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { WriterDetailComponent } from './writer-detail/writer-detail.component';
     ReactiveFormsModule,
     MatDividerModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    DialogModule
   ]
 })
 export class MainModule { }

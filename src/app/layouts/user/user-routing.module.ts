@@ -15,9 +15,14 @@ import { MyCommentsComponent } from './comment/my-comments/my-comments.component
 import { ListComponent as BlogListComponent } from './blog/list/list.component'
 import { MyBlogsComponent } from './blog/my-blogs/my-blogs.component'
 import { AddComponent as BlogAddComponent } from './blog/add/add.component'
+import { ListComponent as AdminListComponent } from './authorization-menu/admin/list/list.component';
+import { AssignRoleComponent } from './authorization-menu/admin/assign-role/assign-role.component';
 
+import { ListComponent as WriterListComponent } from './authorization-menu/writer/list/list.component';
 
-import { AuthGuard, Roles } from 'src/app/guards/auth.guard';
+import { AuthGuard } from 'src/app/guards/auth.guard';
+import { Roles } from 'src/app/services/role.service';
+
 const routes: Routes = [
   {
     path: 'u',
@@ -55,6 +60,18 @@ const routes: Routes = [
           { path: 'my-blogs', component: MyBlogsComponent, data: { allowedRoles: [Roles.Writer] } },
           { path: 'list', component: BlogListComponent, data: { allowedRoles: [Roles.Admin] } },
           { path: 'add', component: BlogAddComponent, data: { allowedRoles: [Roles.Writer] } }
+        ]
+      },
+      {
+        path: 'auth',
+        canActivateChild: [AuthGuard],
+        data: { allowedRoles: [Roles.Admin] },
+        children: [
+          { path: 'admin', pathMatch: 'full', redirectTo: 'admin/list' },
+          { path: 'admin/list', component: AdminListComponent },
+          { path: 'admin/assign-role', component: AssignRoleComponent },
+          { path: 'writer', pathMatch: 'full', redirectTo: 'writer/list' },
+          { path: 'writer/list', component: WriterListComponent }
         ]
       }
     ]

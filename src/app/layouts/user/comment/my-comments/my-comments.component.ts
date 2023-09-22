@@ -3,7 +3,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CommentForPaginationRequest } from 'src/app/models/commentForPaginationRequest';
 import { CommentForListDto } from 'src/app/models/dtos/commentForListDto';
+import { Writer } from 'src/app/models/writer';
+import { AuthService } from 'src/app/services/auth.service';
 import { CommentService } from 'src/app/services/comment.service';
+import { WriterService } from 'src/app/services/writer.service';
 
 @Component({
   selector: 'app-my-comments',
@@ -11,27 +14,29 @@ import { CommentService } from 'src/app/services/comment.service';
   styleUrls: ['./my-comments.component.scss']
 })
 export class MyCommentsComponent {
-  displayedColumns: string[] = ['id', 'writerNickName','blogTitle','content', 'createdDate', 'updatedDate', 'status', 'options'];
+  displayedColumns: string[] = ['id', 'writerNickName', 'blogTitle', 'content', 'createdDate', 'updatedDate', 'status', 'options'];
   dataSource: MatTableDataSource<CommentForListDto>;
   filterValue: string = '';
   @ViewChild(MatPaginator) paginator: MatPaginator;
   comments: CommentForListDto[];
-  constructor(private commentService: CommentService) {
+  constructor(
+    private commentService: CommentService,
+    private authService: AuthService,
+    private writerService: WriterService) {
     this.dataSource = new MatTableDataSource(this.comments);
 
   }
   ngOnInit(): void {
-    this.getWithPagination(this.params);
+    this.getCurrentUserComments(this.params);
   }
-  params: CommentForPaginationRequest={
+  params: CommentForPaginationRequest = {
     index: 0,
     size: 5,
-    searchValueField:"content",
-    searchValue:this.filterValue
+    searchValueField: "content",
+    searchValue: this.filterValue,
   };
-
-  getWithPagination(params: CommentForPaginationRequest) {
-    this.commentService.getWithPagination(params).subscribe((response) => {
+  getCurrentUserComments(params: CommentForPaginationRequest) {
+    this.commentService.getCurrentUserComments(params).subscribe((response) => {
       this.comments = response.items;
       this.dataSource = new MatTableDataSource<CommentForListDto>(response.items);
       this.paginator.pageSize = response.size;
@@ -47,12 +52,14 @@ export class MyCommentsComponent {
     this.params.size = this.paginator.pageSize;
     this.params.index = this.paginator.pageIndex;
     this.params.searchValue = this.filterValue;
-    this.getWithPagination(this.params);
+    this.getCurrentUserComments(this.params);
+    (this.params);
   }
   applyFilter(event: Event) {
     setTimeout(() => {
       this.setParams();
-      this.getWithPagination(this.params);
+      this.getCurrentUserComments(this.params);
+      (this.params);
 
       this.filterValue = (event.target as HTMLInputElement).value;
 
@@ -64,9 +71,9 @@ export class MyCommentsComponent {
     }, 1000);
 
   }
-  setParams(){
-    this.params.index=this.paginator.pageIndex;
-    this.params.size=this.paginator.pageSize;
-    this.params.searchValue=this.filterValue;
+  setParams() {
+    this.params.index = this.paginator.pageIndex;
+    this.params.size = this.paginator.pageSize;
+    this.params.searchValue = this.filterValue;
   }
 }

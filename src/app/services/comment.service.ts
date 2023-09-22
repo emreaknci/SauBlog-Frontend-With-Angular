@@ -13,11 +13,15 @@ import { CommentForListDto } from '../models/dtos/commentForListDto';
 export class CommentService {
 
   constructor(private httpClient: HttpClient, @Inject("baseUrl") private baseUrl: string) { }
-  getWithPagination(req:CommentForPaginationRequest) {
+  getWithPagination(req: CommentForPaginationRequest) {
     let newPath = this.baseUrl + `api/comments/getWithPagination`
-    return this.httpClient.get<PaginationResult<CommentForListDto>>(newPath,{params:this.setPaginationParams(req)});
+    return this.httpClient.get<PaginationResult<CommentForListDto>>(newPath, { params: this.setPaginationParams(req) });
   }
-   add(dto: CommentForCreateDto) {
+  getCurrentUserComments(req: CommentForPaginationRequest) {
+    let newPath = this.baseUrl + `api/comments/getCurrentUserComments`
+    return this.httpClient.get<PaginationResult<CommentForListDto>>(newPath, { params: this.setPaginationParams(req) });
+  }
+  add(dto: CommentForCreateDto) {
     let newPath = this.baseUrl + `api/comments/add`
     return this.httpClient.post<DataResult<Comment>>(newPath, dto);
   }

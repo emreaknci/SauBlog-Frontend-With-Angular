@@ -72,7 +72,7 @@ export class HttpErrorHandlerInterceptor implements HttpInterceptor {
           return throwError(() => new Error(httpErrorResponse.error.message));
         }
         this.toastrService.warning('Beklenmeyen bir hata ile karşılaşıldı.', 'Hata!')
-        return throwError(() => new Error());
+        return throwError(() => new Error(httpErrorResponse.error));
 
       })
     );

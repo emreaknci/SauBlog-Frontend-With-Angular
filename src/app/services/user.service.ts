@@ -27,8 +27,16 @@ export class UserService {
     let newPath = this.baseUrl + `api/users/changePassword`
     return this.httpClient.put<Result>(newPath, dto);
   }
-  delete(userId: number) {
-    let newPath = this.baseUrl + `api/users/delete?userId=${userId}`
+  assignRole(id: number, roleName: string) {
+    let newPath = this.baseUrl + `api/users/assignRole?id=${id}&roleName=${roleName}`
+    return this.httpClient.get<Result>(newPath);
+  }
+  revokeRole(id: number, roleName: string) {
+    let newPath = this.baseUrl + `api/users/revokeRole?id=${id}&roleName=${roleName}`
+    return this.httpClient.get<Result>(newPath);
+  }
+  delete(id: number) {
+    let newPath = this.baseUrl + `api/users/delete?userId=${id}`
     return this.httpClient.delete<Result>(newPath);
   }
 
